@@ -3,7 +3,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 
-export default function ClientProvider({
+export function ReactQueryProvider({
   children,
 }: {
   children: React.ReactNode;
@@ -13,9 +13,9 @@ export default function ClientProvider({
       new QueryClient({
         defaultOptions: {
           queries: {
-            //cache the data 5 mins by default
-            staleTime: 5 * 60 * 1000,
-            gcTime: 10 * 60 * 100,
+            staleTime: 60 * 1000, // 1 minute
+            retry: 1,
+            refetchOnWindowFocus: false,
           },
         },
       }),

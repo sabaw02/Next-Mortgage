@@ -3,11 +3,11 @@ import "./globals.css";
 // import Header from "@/components/common/Header/Header";
 // import Footer from "@/components/common/Footer";
 import { ThemeProvider } from "next-themes";
-import ClientProvider from "@/providers/query-client-provider";
-import localFont from "next/font/local"
+import localFont from "next/font/local";
+import { ReactQueryProvider } from "@/lib/react-query/provider";
 
 const iranSans = localFont({
-  src:[
+  src: [
     {
       path: "../assets/fonts/iran-sans/IRANSans_UltraLight.ttf",
       weight: "200",
@@ -34,7 +34,7 @@ const iranSans = localFont({
     },
   ],
   variable: "--font-iran-sans",
-})
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -53,20 +53,20 @@ export default function RootLayout({
       lang="en"
       className={`h-full antialiased`}
     >
-      <body className=
-      {`${iranSans.className} min-h-full flex flex-col justify-center items-center overflow-x-hidden`}>
-        <ClientProvider>
+      <body
+        className={`${iranSans.className} min-h-full flex flex-col justify-center items-center overflow-x-hidden`}
+      >
+        {" "}
+        <ReactQueryProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
             enableSystem={false}
             storageKey="my-theme"
           >
-            {/* <Header /> */}
             {children}
-            {/* <Footer /> */}
           </ThemeProvider>
-        </ClientProvider>
+        </ReactQueryProvider>
       </body>
     </html>
   );

@@ -1,36 +1,62 @@
 import { Button, Modal } from "@heroui/react";
 import React from "react";
 
-const ModalComponent = () => {
+export default function ModalComponent({
+  children,
+  text,
+  size,
+  title,
+  isConfirm,
+  confirmText,
+  isCancel,
+  cancelText,
+}: Readonly<{
+  children: React.ReactNode;
+  size?: string | undefined | null;
+  text: string;
+  title: string;
+  isConfirm: boolean;
+  confirmText: string;
+  cancelText: string;
+  isCancel: boolean;
+}>) {
   return (
     <div>
       <Modal>
         <Button variant="secondary">
-          sss {/* {placement.charAt(0).toUpperCase() + placement.slice(1)} */}
+          {text}
+          {/* {placement.charAt(0).toUpperCase() + placement.slice(1)} */}
         </Button>
         <Modal.Backdrop>
-          <Modal.Container placement="auto">
-            <Modal.Dialog className="sm:max-w-[360px]">
+          <Modal.Container placement="auto" size={size || "lg"}>
+            <Modal.Dialog>
               <Modal.CloseTrigger />
-              <Modal.Header>
-                <Modal.Icon className="bg-default text-foreground">
-                  {/* <Rocket className="size-5" /> */}
-                </Modal.Icon>
-                <Modal.Heading>
-                  {/* Placement: {placement.charAt(0).toUpperCase() + placement.slice(1)} */}
-                </Modal.Heading>
+              <Modal.Header className="mt-6 text-primary-500">
+                <h1>{title}</h1>
               </Modal.Header>
               <Modal.Body>
-                <p>
-                  This modal uses the <code>"right"</code> placement option. Try
-                  different placements to see how the modal positions itself on
-                  the screen.
-                </p>
+                {children}
+                <>
+                  This modal uses the size variant. On mobile devices, all sizes
+                  adapt to near full-width for optimal viewing. On desktop, each
+                  size provides a different maximum width to suit various
+                  content needs.
+                </>
               </Modal.Body>
               <Modal.Footer>
-                <Button className="w-full" slot="close">
-                  Continue
-                </Button>
+                {isCancel === true ? (
+                  <Button slot="close" variant="secondary">
+                    {cancelText}
+                  </Button>
+                ) : (
+                  ""
+                )}
+
+                {isConfirm === true ? (
+                  <Button slot="close">{confirmText}</Button>
+                ) : (
+                  ""
+                )}
               </Modal.Footer>
             </Modal.Dialog>
           </Modal.Container>
@@ -38,6 +64,4 @@ const ModalComponent = () => {
       </Modal>
     </div>
   );
-};
-
-export default ModalComponent;
+}

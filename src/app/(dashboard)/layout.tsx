@@ -1,5 +1,5 @@
-import HeaderDashboard from "@/components/dashboard/header/HeaderDashboard";
-import SideBar from "@/components/dashboard/sideBar/SideBar";
+import HeaderDashboard from "@/components/dashboard/common/header/HeaderDashboard";
+import SideBar from "@/components/dashboard/common/sideBar/SideBar";
 import { getServerUser } from "@/lib/auth/getServerUser";
 import { redirect } from "next/navigation";
 

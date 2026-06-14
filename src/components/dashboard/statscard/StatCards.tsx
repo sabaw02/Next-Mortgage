@@ -5,7 +5,6 @@ import Image from "next/image";
 import arrow from "@/assets/icons/dashboard/arrow.svg";
 import { toFa } from "@/lib/numToFa/toFa";
 
-
 const stats = [
   { label: "بازدید های امروز", value: 5 },
   { label: "رزرو های در انتظار", value: 5 },
@@ -34,7 +33,7 @@ export function StatCards() {
 
           <button className="flex w-full items-center justify-between text-sm text-primary-900  ">
             <span className="flex items-center gap-1">مشاهده</span>
-            <span className="flex items-center text-base leading-none tracking-tighter">
+            <span className="flex items-center text-base ">
               <Image src={arrow} alt="icon" width={62} height={17} />
             </span>
           </button>

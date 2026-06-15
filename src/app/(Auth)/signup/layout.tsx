@@ -5,8 +5,6 @@ import type { FC, ReactNode } from 'react'
 import { useState } from 'react';
 import Image from 'next/image';
 import Link from "next/link";
-import Verifiction from "../../../components/signUp/verify/verifiction"
-import Account from "../../../components/signUp/account/account"
 import StepIndicator from "../../../components/signUp/stepInndicator/stepIndicator"
 import logo from "@/assets/images/authentication/pexels-josh-hild-1270765-28501949.png"
 import google from '@/assets/images/authentication/Google.png'
@@ -16,53 +14,17 @@ import home from "@/assets/images/authentication/home-line.png"
 interface IChildren {
   children: ReactNode;
 }
-type step = 'email' | 'verify'  | 'account'
 
 const SignUpLayout:FC<IChildren>= ({children}) => {
-    const [step, setStep] = useState<step>('email');
-    const [email, setEmail] = useState('');
-
-    const nextStep = () => {
-    if (step === 'email') setStep('verify');
-    else if (step === 'verify') setStep('account');
-  };
-
-  const prevStep = () => {
-    if (step === 'verify') setStep('email');
-    else if (step === 'account') setStep('verify');
-  };
 
   return (
     <>
-        <StepIndicator currentStep={step} />
+        <StepIndicator/>
 
         <Image src={logo} alt={'login main image'} width={140} height={100} className={'mx-auto'}/>
         
         <div>
             {children}
-
-            {step === 'verify' && (
-                <Verifiction
-                // email={formData.email}
-                // phone={formData.phone}
-                // onVerify={(code) => {
-                //     updateFormData({ code });
-                //     nextStep();
-                // }}
-                // onBack={prevStep}
-                />
-            )}
-
-            {step === 'account' && ( 
-                <Account
-            //     onSetPassword={(password) => {
-            //         updateFormData({ password });
-            //         handleSubmit();
-            //     }}
-            //     onBack={prevStep}
-                />
-            )}
-
 
             <div className={'pb-[20px]'}>
                 <div className='w-[270px] mx-auto text-right'>

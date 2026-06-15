@@ -12,7 +12,15 @@ const HeroSection = () => {
 
   return (
     <div className="max-[1240px]:h-112.5 items-center text-center max-[1100px]:h-auto max-[1100px]:flex-col flex w-full h-auto relative">
-      <button onClick={() => setStaticToken()} className="text-6xl bg-red-50 text-black">Set Token</button>
+      {/* <button
+        onClick={async () => {
+          await setStaticToken();
+           window.location.reload();
+        }}
+        className="text-6xl bg-red-50 text-black"
+      >
+        Set Token
+      </button>{" "} */}
       <Image
         className="hidden sm:block absolute top-110 -left-26 -rotate-30 "
         src={square}

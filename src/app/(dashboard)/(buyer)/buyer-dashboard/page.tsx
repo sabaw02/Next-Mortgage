@@ -1,11 +1,11 @@
+import BookingsTable from "@/components/dashboard/buyer/bookingsTable";
 import MainDashboard from "@/components/dashboard/common/mainDashboard/MainDashboard";
-import React from "react";
 
 const BuyerDashboardPage = () => {
   return (
     <div>
       <MainDashboard />
-      {/* Tsble */}
+      <BookingsTable />
     </div>
   );
 };

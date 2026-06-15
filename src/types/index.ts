@@ -12,3 +12,4 @@ export * from "./houses.types";
 export * from "./reservepage.types";
 export * from "./favorites.types";
 export * from "./users.types";
+export * from "./booking.types";

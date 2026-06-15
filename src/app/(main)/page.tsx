@@ -15,8 +15,8 @@ import { cookies } from "next/headers";
 const LandingPage = async () => {
   const houses = await getHouses();
   const comments = await GetComments();
-  // const token = (await cookies()).get("token")?.value;
-  // console.log("Token from cookie:", token);
+  const token = (await cookies()).get("token")?.value;
+  console.log("Token from cookie:", token);
   return (
     <div className="w-full xl:w-380 max-h-full p-10 m-0 overflow-x-hidden overflow-y-hidden">
       <HeroSection />

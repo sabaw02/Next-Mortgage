@@ -5,7 +5,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from "next/link";
 import emailpic from '@/assets/images/authentication/Email.png'
-import {registerStep1} from '@/app/actions/auth'
+import {registerStep1} from '@/actions/auth'
 
 const StepOnePage = () => {
   const [email, setEmail] = useState('');

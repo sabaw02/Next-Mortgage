@@ -1,103 +1,36 @@
 'use client';
 
-import React from 'react'
-import type { FC, ReactNode } from 'react'
 import { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import Link from "next/link";
-import Identifier from "../../../components/forgetPass/identifier/Identifier"
-import Verifiction from "../../../components/forgetPass/verify/verifiction"
-import NewPass from "../../../components/forgetPass/newPass/newPass"
-import StepIndicator from "../../../components/forgetPass/stepInndicator/stepIndicator"
-import logo from "@/assets/images/authentication/pexels-josh-hild-1270765-28501949.png"
-import google from '@/assets/images/authentication/Google.png'
-import apple from '@/assets/images/authentication/Apple.png'
-import home from "@/assets/images/authentication/home-line.png"
+import email from '@/assets/images/authentication/Email.png'
 
-type step = 'email' | 'verify'  | 'newPass'
+const stepOnePage = () => {
 
-const ForgetPasswordPage= () => {
-    const [step, setStep] = useState<step>('email');
-    const [email, setEmail] = useState('');
-
-    const nextStep = () => {
-    if (step === 'email') setStep('verify');
-    else if (step === 'verify') setStep('newPass');
-  };
-
-  const prevStep = () => {
-    if (step === 'verify') setStep('email');
-    else if (step === 'newPass') setStep('verify');
+  const handleSubmit = (e: FormData) => {
+    // e.;
+    // if () onNext();
   };
 
   return (
-    <>
-        <StepIndicator currentStep={step} />
-
-        <Image src={logo} alt={'login main image'} width={140} height={100} className={'mx-auto'}/>
-        
-        <div>
-            {step === 'email' && (
-                <Identifier onNext={nextStep} />
-            )}
-
-            {step === 'verify' && (
-                <Verifiction
-                // email={formData.email}
-                // phone={formData.phone}
-                // onVerify={(code) => {
-                //     updateFormData({ code });
-                //     nextStep();
-                // }}
-                // onBack={prevStep}
-                />
-            )}
-
-            {step === 'newPass' && ( 
-                <NewPass
-            //     onSetPassword={(password) => {
-            //         updateFormData({ password });
-            //         handleSubmit();
-            //     }}
-            //     onBack={prevStep}
-                />
-            )}
-
-
-            <div className={'pb-[30px]'}>
-                <div className='w-[270px] mx-auto text-right'>
-                    <div className="flex items-center gap-2">
-                        <div className="flex-1 h-px bg-neutral-500"></div>
-                        <span className="text-neutral-500 font-normal text-xs">یا</span>
-                        <div className="flex-1 h-px bg-neutral-500"></div>
-                    </div>
-                    <div className='flex gap-[20px] mt-1 mb-3'>
-                        <button type='button' className='flex items-center justify-center gap-[10px] rounded-4xl h-9 border border-neutral-100 w-full'>
-                            <Image src={google} alt='google icon' width={15} className='h-[15px]'/>
-                            <span className='text-xs font-medium'>ورود با گوگل</span>
-                        </button>
-                        <button type='button' className='flex items-center justify-center gap-[10px] rounded-4xl h-9 border border-neutral-100 w-full'>
-                            <Image src={apple} alt='apple icon' width={15} className='h-[15px]'/>
-                            <span className='text-xs font-medium'>ورود با اپل</span>
-                        </button>
-                    </div>
-                    <div className='text-center mt-[15px]'>
-                        <span className='font-medium text-xs text-neutral-700 ml-2'>حساب کاربری ندارید؟</span>
-                        <Link href={''} className='text-xs font-semibold text-primary-500'>در هوم نت ثبت نام کنید</Link>
-                    </div>
-                </div>
-            </div>
-            <div className='flex justify-center items-end h-7'>
-                <Link href={'/'} className=''>
-                    <div className='flex items-center w-[150px] py-px px-4 border border-primary-200 bg-primary-100 rounded-2xl h-full'>
-                        <span className='text-sm font-medium text-primary-600 flex-1 text-center'>صفحه اصلی</span>
-                        <Image src={home} alt='home icon' width={15} height={15}/>
-                    </div>
-                </Link>
-            </div>
-        </div>
-    </>
+    <div>
+      <h2 className={'text-primary-700 text-[22px] font-medium text-center pt-[15px]'}>بازیابی رمزعبور</h2>
+      <p className={'text-neutral-600 font-medium text-xs pt-2 pb-[30px] text-center'}>برای بازیابی رمز عبور، ایمیل  خود را وارد کنید تا حساب خود را بازیابی کنید.</p>
+      <div className='w-[270px] mx-auto text-right'>
+        <h4 className='text-xs font-semibold text-right text-[#1b1b1b] mb-2'>اطلاعات زیر را وارد نمایید</h4>
+        <form>
+          <div className='h-9 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-[12px] flex justify-between items-center'>
+            <input type="email" name='email' onChange={(e) => setEmail(e.target.value)} placeholder='ایمیل خود را وارد نمایید' className='w-full text-[10px] font-semibold text-neutral-700 h-full'/> 
+            <Image src={email} alt='email' width={19} height={19}/>
+          </div>
+          <button type="button" className='w-full h-9 rounded-xl bg-primary-500 text-sm font-medium text-white mt-2 mb-3'>
+            ارسال کد تایید          
+          </button>
+        </form>
+      </div>
+    </div>
   )
 }
 
-export default ForgetPasswordPage;
+export default stepOnePage

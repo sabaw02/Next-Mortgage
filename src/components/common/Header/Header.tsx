@@ -60,12 +60,12 @@ const Header = () => {
 
       <div className=" flex xs:gap-2">
         <ThemeToggle />
-        <Link href={""} className="">
+        <Link href={"/login"} className="">
           <button className="max-[550px]:hidden max-[500px]:w-13.75 max-sm:w-18.75 max-sm:h-9.5 max-lg:rounded-full max-[1060px]:w-21.25 cursor-pointer max-[1200px]:w-25 w-35 h-10 duration-500 border-2 border-[#1C5387] text-[#1C5387] font-semibold text-[16px] hover:scale-105 rounded-2xl">
             ورود
           </button>
         </Link>
-        <Link href={""}>
+        <Link href={"/signup"}>
           <button className="max-[550px]:hidden max-[500px]:w-13.75 max-sm:w-18.75 max-sm:h-9.5 max-lg:rounded-full max-[1060px]:w-21.25 cursor-pointer max-[1200px]:w-25 w-35 h-10 duration-500 bg-[#1C5387] text-[#FFFFFF] font-semibold text-[16px] hover:scale-105 rounded-2xl">
             ثبت نام
           </button>

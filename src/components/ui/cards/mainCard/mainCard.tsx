@@ -12,7 +12,6 @@ import Link from "next/link";
 
 const MainCard: FC<MainCardProps> = ({
   title,
-  location,
   price,
   photos,
   isDiscount,
@@ -22,6 +21,7 @@ const MainCard: FC<MainCardProps> = ({
   capacity,
   yard_type,
   id,
+  address,
 }) => {
   const formattedPrice = new Intl.NumberFormat("fa-IR").format(Number(price));
   const formattedDisPrice = new Intl.NumberFormat("fa-IR").format(
@@ -55,7 +55,7 @@ const MainCard: FC<MainCardProps> = ({
     return defaultImg;
   };
   const imageSrc = getImageSrc();
-  
+
   const discountPercent = Math.floor(
     ((Number(price) - Number(discounted_price)) / Number(price)) * 100,
   );
@@ -82,7 +82,7 @@ const MainCard: FC<MainCardProps> = ({
               <div className="flex space-x-1.5">
                 <Image src={locationPic} alt="not-found" />
                 <p className="text-neutral-500 text-xs">
-                  {/* {location || "مازندران"} */}
+                  {address || "مازندران"}
                 </p>
               </div>
             </div>

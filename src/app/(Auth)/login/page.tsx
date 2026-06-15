@@ -1,75 +1,43 @@
 'use client';
 
-import React from 'react'
-import type { FC, ReactNode } from 'react'
-import { useState } from 'react';
+import React from 'react';
+import { useActionState } from 'react';
+import {login} from '@/actions/auth'
 import Image from 'next/image';
 import Link from "next/link";
-import Identifier from "../../../components/login/identifier/Identifier"
-import Verify from "../../../components/login/verify/verifiction"
-import StepIndicator from "../../../components/login/stepInndicator/stepIndicator"
-import logo from "@/assets/images/authentication/pexels-josh-hild-1270765-28501949.png"
-import google from '@/assets/images/authentication/Google.png'
-import apple from '@/assets/images/authentication/Apple.png'
-import home from "@/assets/images/authentication/home-line.png"
+import user from '@/assets/images/authentication/User.png'
+import key from '@/assets/images/authentication/Password.png'
 
-const LoginPage= () => {
-    const [step, setStep] = useState<'email' | 'verify'>('email');
-    const [email, setEmail] = useState('');
+const initialState = { error: '' };
 
-    const handleEmailSubmit = (userEmail: string) => {
-        setEmail(userEmail);
-        setStep('verify');
-    };
+const LoginPage = () => {
+    const [state, formAction] = useActionState(login, initialState);
+
   return (
-    <>
-        <StepIndicator currentStep={step} />
-
-        <Image src={logo} alt={'login main image'} width={140} height={100} className={'mx-auto'}/>
-        
-        <div>
-            {step === 'email' && (
-                <Identifier onSubmit={handleEmailSubmit} />
-            )}
-
-            {step === 'verify' && (
-                <Verify
-                // email={email}
-                // onSubmit={handleVerify}
-                // onBack={() => setStep('email')}
-                />
-            )}
-            <div className={'pb-[20px]'}>
-                <div className='w-[270px] mx-auto text-right'>
-                    <div className="flex items-center gap-2">
-                        <div className="flex-1 h-px bg-neutral-500"></div>
-                        <span className="text-neutral-500 font-normal text-xs">یا</span>
-                        <div className="flex-1 h-px bg-neutral-500"></div>
-                    </div>
-                    <div className='flex gap-[20px] mt-1 mb-3'>
-                        <button type='button' className='flex items-center justify-center gap-[10px] rounded-4xl h-9 border border-neutral-100 w-full'>
-                            <Image src={google} alt='google icon' width={15} className='h-[15px]'/>
-                            <span className='text-xs font-medium'>ورود با گوگل</span>
-                        </button>
-                        <button type='button' className='flex items-center justify-center gap-[10px] rounded-4xl h-9 border border-neutral-100 w-full'>
-                            <Image src={apple} alt='apple icon' width={15} className='h-[15px]'/>
-                            <span className='text-xs font-medium'>ورود با اپل</span>
-                        </button>
-                    </div>
-                    <div className='text-center'>
-                        <span className='font-medium text-xs text-neutral-700 ml-2'>حساب کاربری ندارید؟</span>
-                        <Link href={''} className='text-xs font-semibold text-primary-500'>در هوم نت ثبت نام کنید</Link>
-                    </div>
-                </div>
-                <Link href={'/'} className='flex justify-center'>
-                    <div className='flex items-center w-[150px] py-px px-4 border border-primary-200 bg-primary-100 mt-[20px] rounded-2xl'>
-                        <span className='text-sm font-medium text-primary-600 flex-1 text-center'>صفحه اصلی</span>
-                        <Image src={home} alt='home icon' width={15} height={15}/>
-                    </div>
-                </Link>
-            </div>
-        </div>
-    </>
+    <div>
+      <h2 className={'text-primary-700 text-[18px] font-semibold text-center pt-[10px]'}>ورود به حساب کاربری</h2>
+      <p className={'text-neutral-600 font-medium text-xs pt-2 pb-[25px] text-center'}>برای دسترسی به همه خدمات هوم‌نت و تجربه بهتر در سایت، وارد حساب خود شوید.</p>
+      <div className='w-[270px] mx-auto text-right'>
+        <h4 className='text-xs font-semibold text-right text-[#1b1b1b] mb-2'>اطلاعات زیر را وارد نمایید</h4>
+        <form action={formAction}>
+          <div className='h-9 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-[14px] flex justify-between items-center'>
+            <input type="email" name='email' placeholder='ایمیل خود را وارد نمایید' className='w-full text-[10px] font-semibold text-neutral-700 h-full' required/> 
+            <Image src={user} alt='user' width={19} height={19}/>
+          </div>
+          <div className='h-9 w-full rounded-xl border border-neutral-200 bg-neutral-50 px-[14px] flex justify-between items-center mt-1 mb-2'>
+            <input type="password" name='password' placeholder='رمز عبور خود را وارد نمایید' className='w-full text-[10px] font-semibold text-neutral-700 h-full' required/> 
+            <Image src={key} alt='key' width={19} height={19}/>
+          </div>
+          <Link href={'/'} className='text-xs font-medium text-primary-800'>فراموشی رمزعبور</Link>
+          {state.error && (
+            <p className="text-red-500 text-[10px] text-center">{state.error}</p>
+          )}
+          <button type="submit" className='w-full h-9 cursor-pointer rounded-xl bg-primary-500 text-sm font-medium text-white mt-2 mb-3'>
+            ورود به حساب کاربری
+          </button>
+        </form>
+      </div>
+    </div>
   )
 }
 

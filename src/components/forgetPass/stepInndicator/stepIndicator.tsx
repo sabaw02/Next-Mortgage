@@ -3,7 +3,7 @@ interface IProp {
   currentStep: 'email' | 'verify' | 'newPass'
 }
 
-export default function StepIndicator({ currentStep } : IProp) {
+export default function StepIndicator() {
   return (
     <div className="flex justify-center items-center gap-5 mb-6 text-center mt-2">
       <div>

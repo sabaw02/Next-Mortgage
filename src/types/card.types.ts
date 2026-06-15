@@ -12,7 +12,7 @@ export interface MainCardProps {
   tags: string[];
   last_updated: string;
   capacity: number;
-  location: string;
+  location?: { lat: number; lng: number } | string | null;
   categories: string | null;
   bathrooms: number;
   parking: number;

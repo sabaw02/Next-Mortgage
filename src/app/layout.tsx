@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import localFont from "next/font/local";
 import { ReactQueryProvider } from "@/lib/react-query/provider";
+import { Toast } from "@heroui/react";
 
 const iranSans = localFont({
   src: [
@@ -64,6 +65,7 @@ export default function RootLayout({
             enableSystem={false}
             storageKey="my-theme"
           >
+            <Toast.Provider placement="top" />
             {children}
           </ThemeProvider>
         </ReactQueryProvider>

@@ -1,7 +1,7 @@
-import React from "react";
-import { StatCards } from "../../statscard/StatCards";
-import IncomeCard from "../../incomecard/income-card";
-import ProfileCard from "../../profilecard/profile-card";
+"use client";
+import { StatCards } from "../statscard/StatCards";
+import IncomeCard from "../incomecard/income-card";
+import ProfileCard from "../profilecard/profile-card";
 
 const MainDashboard = () => {
   return (
@@ -11,7 +11,6 @@ const MainDashboard = () => {
         <IncomeCard />
         <ProfileCard />
       </div>
-      {/* <Reservations /> */}
     </main>
   );
 };

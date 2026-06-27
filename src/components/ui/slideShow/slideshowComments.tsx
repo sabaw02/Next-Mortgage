@@ -55,15 +55,15 @@ const SlideShowComments: FC<CommentBoxProps> = ({ comments }) => {
           swiperRef.current = swiper;
           setCenterSlideIndex(swiper.realIndex);
         }}
-        breakpoints={{
-          0: { slidesPerView: 1, spaceBetween: 10, centeredSlides: true },
-          640: { slidesPerView: 1.75, spaceBetween: 70, centeredSlides: true },
-          800: { slidesPerView: 2, spaceBetween: 10, centeredSlides: true },
-          900: { slidesPerView: 2.25, spaceBetween: 10, centeredSlides: true },
-          1000: { slidesPerView: 2.5, spaceBetween: 10, centeredSlides: true },
-          1150: { slidesPerView: 2.75, spaceBetween: 10, centeredSlides: true },
-          1250: { slidesPerView: 3, spaceBetween: 10, centeredSlides: true },
-        }}
+          breakpoints={{
+            0: { slidesPerView: 1, spaceBetween: 10, centeredSlides: true },
+            640: { slidesPerView: 1.75, spaceBetween: 70, centeredSlides: true },
+            800: { slidesPerView: 2, spaceBetween: 10, centeredSlides: true },
+            900: { slidesPerView: 2.25, spaceBetween: 10, centeredSlides: true },
+            1000: { slidesPerView: 2.5, spaceBetween: 10, centeredSlides: true },
+            1150: { slidesPerView: 2.75, spaceBetween: 10, centeredSlides: true },
+            1250: { slidesPerView: 3, spaceBetween: 10, centeredSlides: true },
+          }}
         className="center-track-swiper special-offers-swiper space-y-16"
       >
         {comments.slice(0, 5).map((item, index) => (

@@ -5,7 +5,7 @@ export interface HousesProps {
     address: string;
     photos: string | null;
     rate: string;
-    discounted_price: number;
+    discounted_price: number | null;
     price: number;
     tags: string[];
     last_updated: string;
